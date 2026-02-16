@@ -6,9 +6,9 @@ A high-fidelity landing page for **Nex**, an advanced AI recruitment platform.
 
 - **Ultra-Modern UI**: Glassmorphism design with deep dark backgrounds and neon glowing effects.
 - **Multi-Page Application**: Includes Home, Login, Signup, About, Services, Portfolio, and Contact pages.
-- **Responsive Layout**: Fully responsive design using Tailwind CSS.
+- **Fully Responsive**: Optimized for all devices (Mobile, Tablet, Desktop) with adaptive layouts and menus.
 - **Interactive Elements**: 3D tilt cards, scroll-triggered animations, and hover effects.
-- **Seamless Navigation**: Client-side routing with `react-router-dom`.
+- **Seamless Navigation**: Client-side routing with `react-router-dom` and mobile hamburger menu.
 - **Custom Assets**: Integration of custom logos and glassmorphism-styled icons.
 
 ## Tech Stack

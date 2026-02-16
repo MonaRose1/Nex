@@ -44,7 +44,7 @@ const Process = () => {
                             className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                         >
                             {/* Content Card */}
-                            <div className="w-full md:w-1/2">
+                            <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 !== 0 ? 'md:pl-12' : 'md:pr-12'}`}>
                                 <div className="glass p-8 rounded-2xl hover:bg-white/10 transition-colors duration-300 relative group">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-royalBlue to-brightTeal rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"></div>
                                     <div className="relative z-10">
