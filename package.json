@@ -1,6 +1,7 @@
 {
   "name": "nex-app",
   "private": true,
+  "homepage": "https://monarose1.github.io/Nex/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
