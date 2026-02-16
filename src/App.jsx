@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -32,7 +32,7 @@ const NavigationWrapper = ({ children }) => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Nex">
       <ScrollToTop />
       <NavigationWrapper>
         <Routes>
