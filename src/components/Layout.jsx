@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
             <div className="fixed inset-0 z-0">
                 <div className="absolute inset-0 bg-midnightBlue/80 mix-blend-multiply z-10"></div>
                 <img
-                    src="/BG/Abstract.jpg"
+                    src={`${import.meta.env.BASE_URL}BG/Abstract.jpg`}
                     alt="Background"
                     className="w-full h-full object-cover opacity-60"
                 />

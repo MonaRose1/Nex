@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className="glass rounded-full px-6 py-3 flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center gap-2">
-                    <img src="/Nex LOGO/Final EXPORT.svg" alt="Nex Logo" className="h-8 w-auto" />
+                    <img src={`${import.meta.env.BASE_URL}Nex LOGO/Final EXPORT.svg`} alt="Nex Logo" className="h-8 w-auto" />
                 </div>
 
                 {/* Links */}
