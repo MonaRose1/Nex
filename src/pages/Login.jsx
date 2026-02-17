@@ -26,12 +26,12 @@ const Login = () => {
         try {
             // API call to backend
             const response = await axios.post(
-                'http://localhost:4000/api/auth/login', 
+                'http://localhost:4000/api/auth/login',
                 {
                     email: formData.email,
                     password: formData.password
                 },
-                { 
+                {
                     withCredentials: true, // Important for cookies
                     headers: {
                         'Content-Type': 'application/json'
@@ -41,13 +41,13 @@ const Login = () => {
 
             // Store user data in localStorage
             localStorage.setItem('user', JSON.stringify(response.data.user));
-            
+
             // Show success message (optional)
             console.log('Login successful:', response.data.user);
-            
+
             // Redirect to dashboard or home page
             navigate('/dashboard'); // Change this to your desired route
-            
+
         } catch (err) {
             // Handle error responses
             if (err.response) {
@@ -68,11 +68,11 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center relative">
-            <div className="glass p-10 rounded-3xl w-full max-w-md relative z-10">
-                <h2 className="text-3xl font-bold font-sora mb-8 text-center bg-gradient-to-r from-royalBlue to-brightTeal bg-clip-text text-transparent">
+            <div className="glass p-10 rounded-3xl w-full max-w-md relative z-10 border-midnightBlue/10 dark:border-white/10">
+                <h2 className="text-3xl font-bold font-sora mb-8 text-center bg-gradient-to-r from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal bg-clip-text text-transparent">
                     Welcome Back
                 </h2>
-                
+
                 {/* Error Message Display */}
                 {error && (
                     <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
@@ -82,32 +82,32 @@ const Login = () => {
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                        <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
                             Email
                         </label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
-                            placeholder="you@example.com" 
+                            className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            placeholder="you@example.com"
                             required
                             disabled={loading}
                         />
                     </div>
-                    
+
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                        <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
                             Password
                         </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
-                            placeholder="••••••••" 
+                            className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            placeholder="••••••••"
                             required
                             disabled={loading}
                         />
@@ -115,17 +115,16 @@ const Login = () => {
 
                     {/* Forgot Password Link */}
                     <div className="text-right">
-                        <Link to="/forgot-password" className="text-sm text-brightTeal hover:underline">
+                        <Link to="/forgot-password" title="Forgot Password" className="text-sm text-brightTeal-dark dark:text-brightTeal font-bold hover:underline">
                             Forgot Password?
                         </Link>
                     </div>
-                    
-                    <button 
-                        type="submit" 
+
+                    <button
+                        type="submit"
                         disabled={loading}
-                        className={`w-full bg-gradient-to-r from-royalBlue to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02] ${
-                            loading ? 'opacity-50 cursor-not-allowed' : ''
-                        }`}
+                        className={`w-full bg-gradient-to-r from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02] ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
                     >
                         {loading ? (
                             <span className="flex items-center justify-center">
@@ -139,14 +138,14 @@ const Login = () => {
                     </button>
                 </form>
 
-                <p className="mt-6 text-center text-slate-400 text-sm">
+                <p className="mt-6 text-center text-slate-950 dark:text-slate-400 text-sm font-medium">
                     Don't have an account?{' '}
-                    <Link to="/signup" className="text-brightTeal hover:underline font-medium">
+                    <Link to="/signup" className="text-brightTeal-dark dark:text-brightTeal hover:underline font-bold">
                         Sign up
                     </Link>
                 </p>
             </div>
-            
+
             {/* Background Blur Effect */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-royalBlue/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
         </div>

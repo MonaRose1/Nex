@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-midnightBlue font-inter antialiased overflow-x-hidden transition-colors duration-300;
+    @apply bg-slate-50 text-slate-950 font-inter antialiased overflow-x-hidden transition-colors duration-300;
   }
 
   .dark body {
@@ -24,11 +24,11 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/40 dark:bg-white/5 backdrop-blur-lg border border-midnightBlue/5 dark:border-white/10 shadow-lg transition-all duration-300;
+    @apply bg-white/90 dark:bg-white/5 backdrop-blur-lg border border-midnightBlue/10 dark:border-white/10 shadow-xl transition-all duration-300;
   }
 
   .glass-card {
-    @apply bg-white/40 dark:bg-white/5 backdrop-blur-md border border-midnightBlue/5 dark:border-white/10 rounded-2xl transition-all duration-300 shadow-sm dark:shadow-none;
+    @apply bg-white/90 dark:bg-white/5 backdrop-blur-md border border-midnightBlue/10 dark:border-white/10 rounded-2xl transition-all duration-300 shadow-lg dark:shadow-none;
   }
 
   .text-glow {

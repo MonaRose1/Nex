@@ -1,5 +1,5 @@
-import React from 'react';
-import { LayoutDashboard, Users, Cpu, Settings, LogOut, UserCircle, Camera, Mic, Video } from 'lucide-react';
+import React, { useState } from 'react';
+import { LayoutDashboard, Users, Cpu, Settings, LogOut, Bot, Shield, UserCircle, Camera, Mic, Video } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
 
@@ -7,7 +7,7 @@ const NavItem = ({ icon: Icon, label, path, active, collapsed, badge }) => (
     <Link
         to={path}
         className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group relative ${active
-            ? 'bg-brightTeal/20 text-brightTeal border border-brightTeal/10 shadow-[0_0_15px_rgba(60,178,184,0.3)]'
+            ? 'bg-brightTeal/20 text-brightTeal-dark dark:text-brightTeal border border-brightTeal/10 shadow-[0_0_15px_rgba(60,178,184,0.3)]'
             : 'text-slate-500 dark:text-white/50 hover:bg-slate-200/50 dark:hover:bg-white/5 hover:text-midnightBlue dark:hover:text-white'
             }`}
     >
@@ -20,7 +20,7 @@ const NavItem = ({ icon: Icon, label, path, active, collapsed, badge }) => (
             </span>
         )}
         {badge && (
-            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-green-600 dark:bg-green-500 rounded-full animate-pulse"></span>
         )}
     </Link>
 );
@@ -109,6 +109,13 @@ const Sidebar = () => {
                     badge={true}
                 />
                 <NavItem
+                    icon={Bot}
+                    label="AI Interviewer"
+                    path="/dashboard/interviewer"
+                    active={location.pathname === '/dashboard/interviewer'}
+                    collapsed={isCollapsed}
+                />
+                <NavItem
                     icon={Cpu}
                     label="AI Settings"
                     path="/dashboard/ai-settings"
@@ -142,17 +149,17 @@ const Sidebar = () => {
                 {!isCollapsed && (
                     <div className="bg-gradient-to-r from-royalBlue/20 to-brightTeal/20 rounded-xl p-3 mb-2 border border-white/5">
                         <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-white/70 text-xs">Live Interview in Progress</span>
+                            <div className="w-2 h-2 bg-green-600 dark:bg-green-500 rounded-full animate-pulse"></div>
+                            <span className="text-slate-950 dark:text-white/70 text-xs font-bold">Live Interview Active</span>
                         </div>
                         <div className="flex items-center gap-2 mt-2">
                             <div className="w-6 h-6 rounded-full bg-brightTeal/20 flex items-center justify-center">
-                                <Mic size={12} className="text-brightTeal" />
+                                <Mic size={12} className="text-brightTeal-dark dark:text-brightTeal" />
                             </div>
                             <div className="w-6 h-6 rounded-full bg-brightTeal/20 flex items-center justify-center">
-                                <Video size={12} className="text-brightTeal" />
+                                <Video size={12} className="text-brightTeal-dark dark:text-brightTeal" />
                             </div>
-                            <span className="text-white/30 text-[10px] ml-auto">00:24:12</span>
+                            <span className="text-slate-950 dark:text-white/30 text-[10px] ml-auto font-bold tracking-tighter">00:24:12</span>
                         </div>
                     </div>
                 )}

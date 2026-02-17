@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Mic, Volume2, VolumeX, Send, Award, AlertCircle, CheckCircle, XCircle, Loader, Clock, BarChart3, TrendingUp, CheckSquare, MessageSquare, ThumbsUp } from 'lucide-react';
+import { Camera, Mic, Volume2, VolumeX, Send, Award, AlertCircle, CheckCircle, XCircle, Loader, Clock, BarChart3, TrendingUp, CheckSquare, MessageSquare, ThumbsUp, Phone } from 'lucide-react';
 
 const AvatarInterview = () => {
     const [isCameraOn, setIsCameraOn] = useState(false);
@@ -16,7 +16,7 @@ const AvatarInterview = () => {
     const [timeLeft, setTimeLeft] = useState(15);
     const [showAnalytics, setShowAnalytics] = useState(false);
     const [answerTimer, setAnswerTimer] = useState(null);
-    
+
     const videoRef = useRef(null);
     const streamRef = useRef(null);
     const recognitionRef = useRef(null);
@@ -95,7 +95,7 @@ const AvatarInterview = () => {
                 setIsProcessing(false);
                 setIsListening(false);
                 clearTimer();
-                
+
                 if (event.error === 'no-speech') {
                     handleNoAnswer();
                 }
@@ -110,7 +110,7 @@ const AvatarInterview = () => {
         const loadVoices = () => {
             synthesisRef.current.getVoices();
         };
-        
+
         window.speechSynthesis.onvoiceschanged = loadVoices;
         loadVoices();
     }, []);
@@ -119,11 +119,11 @@ const AvatarInterview = () => {
     const toggleCamera = async () => {
         if (!isCameraOn) {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: true, 
-                    audio: true 
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: true
                 });
-                
+
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
                 }
@@ -156,15 +156,15 @@ const AvatarInterview = () => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = 0.9;
         utterance.pitch = 1;
-        
+
         // Select a good voice
         const voices = synthesisRef.current.getVoices();
-        const preferredVoice = voices.find(voice => 
-            voice.name.includes('Google UK') || 
-            voice.name.includes('Microsoft David') || 
+        const preferredVoice = voices.find(voice =>
+            voice.name.includes('Google UK') ||
+            voice.name.includes('Microsoft David') ||
             voice.name.includes('Samantha')
         );
-        
+
         if (preferredVoice) {
             utterance.voice = preferredVoice;
         }
@@ -221,7 +221,7 @@ const AvatarInterview = () => {
         setAnswers([]);
         setFeedback(null);
         setShowAnalytics(false);
-        
+
         setTimeout(() => {
             askQuestion(0);
         }, 1000);
@@ -232,7 +232,7 @@ const AvatarInterview = () => {
         const q = questions[index];
         setFeedback(null);
         setUserAnswer('');
-        
+
         speakText(`Question ${index + 1}: ${q.question}`, () => {
             const prompt = "You have 15 seconds to answer. Please speak now.";
             speakText(prompt, () => {
@@ -258,7 +258,7 @@ const AvatarInterview = () => {
         clearTimer();
         const timeUpMessage = "Time's up! No answer detected. ";
         const q = questions[currentQuestion];
-        
+
         const feedbackData = {
             correctness: 'incorrect',
             matchedKeywords: [],
@@ -269,10 +269,10 @@ const AvatarInterview = () => {
             correctAnswer: q.correctAnswer,
             remarks: "No answer provided. Time expired."
         };
-        
+
         setFeedback(feedbackData);
         setIsProcessing(false);
-        
+
         // Save answer
         setAnswers(prev => [...prev, {
             question: q.question,
@@ -280,7 +280,7 @@ const AvatarInterview = () => {
             feedback: feedbackData,
             timestamp: new Date().toISOString()
         }]);
-        
+
         speakText(timeUpMessage + "The correct answer is: " + q.correctAnswer, () => {
             setTimeout(() => {
                 speakText("Moving to next question.", () => {
@@ -297,7 +297,7 @@ const AvatarInterview = () => {
         clearTimer();
         const q = questions[currentQuestion];
         const answerLower = answer.toLowerCase();
-        
+
         // Smart keyword matching
         const matchedKeywords = q.keywords.filter(keyword => {
             const keywordLower = keyword.toLowerCase();
@@ -309,17 +309,17 @@ const AvatarInterview = () => {
             if (keywordLower.endsWith('s') && answerLower.includes(keywordLower.slice(0, -1))) return true;
             return false;
         });
-        
+
         // Remove duplicates
         const uniqueMatchedKeywords = [...new Set(matchedKeywords)];
         const matchPercentage = (uniqueMatchedKeywords.length / q.keywords.length) * 100;
-        
+
         // Determine correctness
         let correctness = 'incorrect';
         let scoreIncrement = 0;
         let feedbackMessage = '';
         let remarks = '';
-        
+
         if (matchPercentage >= 70) {
             correctness = 'correct';
             scoreIncrement = 10;
@@ -356,7 +356,7 @@ const AvatarInterview = () => {
 
         setFeedback(feedbackData);
         setScore(prev => prev + scoreIncrement);
-        
+
         setAnswers(prev => [...prev, {
             question: q.question,
             answer,
@@ -371,7 +371,7 @@ const AvatarInterview = () => {
         if (correctness !== 'correct') {
             fullFeedback += "The correct answer is: " + q.correctAnswer + ". ";
         }
-        
+
         if (currentQuestion < questions.length - 1) {
             fullFeedback += "Moving to next question.";
         } else {
@@ -395,10 +395,10 @@ const AvatarInterview = () => {
             // End interview and show analytics
             setIsInterviewActive(false);
             setShowAnalytics(true);
-            
+
             const totalPossibleScore = questions.length * 10;
             const percentage = (score / totalPossibleScore) * 100;
-            
+
             let finalRemark = "";
             if (percentage >= 80) {
                 finalRemark = "🌟 Excellent performance! You have strong knowledge!";
@@ -409,10 +409,40 @@ const AvatarInterview = () => {
             } else {
                 finalRemark = "💪 Needs improvement. Study the fundamentals and practice more.";
             }
-            
+
             const finalMessage = `Interview completed! Your final score is ${score} out of ${totalPossibleScore}. ${finalRemark}`;
             speakText(finalMessage);
         }
+    };
+
+    // End interview early
+    const endInterview = () => {
+        clearTimer();
+        if (isListening && recognitionRef.current) {
+            recognitionRef.current.stop();
+        }
+        synthesisRef.current.cancel();
+        setIsListening(false);
+        setIsProcessing(false);
+        setIsInterviewActive(false);
+        setShowAnalytics(true);
+
+        const totalPossibleScore = questions.length * 10;
+        const percentage = (score / totalPossibleScore) * 100;
+
+        let finalRemark = "";
+        if (percentage >= 80) {
+            finalRemark = "🌟 Excellent performance! You have strong knowledge!";
+        } else if (percentage >= 60) {
+            finalRemark = "👍 Good job! Keep practicing to improve further.";
+        } else if (percentage >= 40) {
+            finalRemark = "📚 Fair attempt. Review the concepts and try again.";
+        } else {
+            finalRemark = "💪 Needs improvement. Study the fundamentals and practice more.";
+        }
+
+        const finalMessage = `Interview ended. Your score is ${score} out of ${totalPossibleScore}. ${finalRemark}`;
+        speakText(finalMessage);
     };
 
     // Submit typed answer
@@ -449,7 +479,7 @@ const AvatarInterview = () => {
         const avgMatch = answers.reduce((acc, a) => acc + a.feedback.matchPercentage, 0) / totalQuestions || 0;
         const totalPossible = questions.length * 10;
         const percentage = (score / totalPossible) * 100;
-        
+
         let overallRemark = "";
         if (percentage >= 80) {
             overallRemark = "🌟 Excellent! You're well-prepared!";
@@ -460,7 +490,7 @@ const AvatarInterview = () => {
         } else {
             overallRemark = "💪 Needs improvement. Try again!";
         }
-        
+
         return {
             totalQuestions,
             correctAnswers,
@@ -497,25 +527,24 @@ const AvatarInterview = () => {
                         </h1>
                         <p className="text-white/50 text-sm mt-1">3 questions • Real-time evaluation</p>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                         <div className="bg-white/10 px-4 py-2 rounded-xl">
                             <span className="text-white/50 mr-2">Score:</span>
                             <span className="text-[#3CB2B8] font-bold text-xl">{score}/30</span>
                         </div>
-                        
+
                         <button
                             onClick={toggleCamera}
-                            className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
-                                isCameraOn 
-                                    ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                                    : 'bg-white/10 text-white/70 border border-white/10'
-                            }`}
+                            className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${isCameraOn
+                                ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                                : 'bg-white/10 text-white/70 border border-white/10'
+                                }`}
                         >
                             <Camera size={18} />
                             {isCameraOn ? 'Camera On' : 'Camera Off'}
                         </button>
-                        
+
                         <button
                             onClick={() => setIsMuted(!isMuted)}
                             className="p-2 rounded-xl bg-white/10 text-white/70 hover:bg-white/20 transition-all"
@@ -549,7 +578,7 @@ const AvatarInterview = () => {
                                         </div>
                                     </div>
                                 )}
-                                
+
                                 {/* AI Speaking Indicator */}
                                 {isAvatarSpeaking && (
                                     <div className="absolute top-4 left-4 bg-[#3CB2B8] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
@@ -557,7 +586,7 @@ const AvatarInterview = () => {
                                         AI is speaking...
                                     </div>
                                 )}
-                                
+
                                 {/* Listening Indicator */}
                                 {isListening && (
                                     <div className="absolute top-4 right-4 bg-yellow-500 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
@@ -575,11 +604,10 @@ const AvatarInterview = () => {
                                     <button
                                         onClick={startInterview}
                                         disabled={!isCameraOn}
-                                        className={`w-full py-3 rounded-xl font-medium text-lg ${
-                                            isCameraOn
-                                                ? 'bg-gradient-to-r from-green-500 to-[#3CB2B8] text-white hover:shadow-lg hover:scale-[1.02] transition-all'
-                                                : 'bg-white/10 text-white/30 cursor-not-allowed'
-                                        }`}
+                                        className={`w-full py-3 rounded-xl font-medium text-lg ${isCameraOn
+                                            ? 'bg-gradient-to-r from-green-500 to-[#3CB2B8] text-white hover:shadow-lg hover:scale-[1.02] transition-all'
+                                            : 'bg-white/10 text-white/30 cursor-not-allowed'
+                                            }`}
                                     >
                                         🎯 Start Interview
                                     </button>
@@ -587,11 +615,10 @@ const AvatarInterview = () => {
                                     <button
                                         onClick={startVoiceAnswer}
                                         disabled={isProcessing || isAvatarSpeaking || isListening}
-                                        className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 text-lg ${
-                                            isProcessing || isListening
-                                                ? 'bg-yellow-500/20 text-yellow-400'
-                                                : 'bg-[#3CB2B8] text-white hover:bg-[#2A8A8F] hover:scale-[1.02] transition-all'
-                                        }`}
+                                        className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 text-lg ${isProcessing || isListening
+                                            ? 'bg-yellow-500/20 text-yellow-400'
+                                            : 'bg-[#3CB2B8] text-white hover:bg-[#2A8A8F] hover:scale-[1.02] transition-all'
+                                            }`}
                                     >
                                         {isProcessing ? (
                                             <>
@@ -626,13 +653,12 @@ const AvatarInterview = () => {
                                             <span className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded-full">
                                                 {questions[currentQuestion].category}
                                             </span>
-                                            <span className={`text-xs px-2 py-1 rounded-full ${
-                                                questions[currentQuestion].difficulty === 'Hard' 
-                                                    ? 'bg-red-500/20 text-red-400'
-                                                    : questions[currentQuestion].difficulty === 'Medium'
+                                            <span className={`text-xs px-2 py-1 rounded-full ${questions[currentQuestion].difficulty === 'Hard'
+                                                ? 'bg-red-500/20 text-red-400'
+                                                : questions[currentQuestion].difficulty === 'Medium'
                                                     ? 'bg-yellow-500/20 text-yellow-400'
                                                     : 'bg-green-500/20 text-green-400'
-                                            }`}>
+                                                }`}>
                                                 {questions[currentQuestion].difficulty}
                                             </span>
                                         </div>
@@ -656,12 +682,12 @@ const AvatarInterview = () => {
                                         <span className="text-[#3CB2B8] font-bold">{analytics.percentage}%</span>
                                     </div>
                                 </div>
-                                
+
                                 {/* Overall Remark */}
                                 <div className="bg-gradient-to-r from-[#2A2A5A]/40 to-[#3CB2B8]/40 rounded-xl p-4 mb-6 text-center">
                                     <p className="text-white text-lg font-semibold">{analytics.overallRemark}</p>
                                 </div>
-                                
+
                                 {/* Stats Grid */}
                                 <div className="grid grid-cols-2 gap-4 mb-6">
                                     <div className="bg-gradient-to-br from-[#2A2A5A]/20 to-[#3CB2B8]/20 rounded-xl p-4">
@@ -671,7 +697,7 @@ const AvatarInterview = () => {
                                         </div>
                                         <p className="text-3xl font-bold text-white">{score}/{analytics.totalPossible}</p>
                                     </div>
-                                    
+
                                     <div className="bg-gradient-to-br from-[#2A2A5A]/20 to-[#3CB2B8]/20 rounded-xl p-4">
                                         <div className="flex items-center gap-2 mb-2">
                                             <CheckSquare size={20} className="text-green-400" />
@@ -706,13 +732,12 @@ const AvatarInterview = () => {
                                         <div key={idx} className="bg-white/5 rounded-xl p-3">
                                             <div className="flex items-center justify-between mb-2">
                                                 <span className="text-white/50 text-xs">Q{idx + 1}: {questions[idx].category}</span>
-                                                <span className={`text-xs px-2 py-1 rounded-full ${
-                                                    ans.feedback.correctness === 'correct'
-                                                        ? 'bg-green-500/20 text-green-400'
-                                                        : ans.feedback.correctness === 'partial'
+                                                <span className={`text-xs px-2 py-1 rounded-full ${ans.feedback.correctness === 'correct'
+                                                    ? 'bg-green-500/20 text-green-400'
+                                                    : ans.feedback.correctness === 'partial'
                                                         ? 'bg-yellow-500/20 text-yellow-400'
                                                         : 'bg-red-500/20 text-red-400'
-                                                }`}>
+                                                    }`}>
                                                     {Math.round(ans.feedback.matchPercentage)}% Match
                                                 </span>
                                             </div>
@@ -721,7 +746,7 @@ const AvatarInterview = () => {
                                         </div>
                                     ))}
                                 </div>
-                                
+
                                 <button
                                     onClick={() => {
                                         setShowAnalytics(false);
@@ -767,18 +792,17 @@ const AvatarInterview = () => {
                                     <Award size={18} className="text-[#3CB2B8]" />
                                     Feedback
                                 </h3>
-                                
-                                <div className={`mb-4 p-3 rounded-xl ${
-                                    feedback.correctness === 'correct' 
-                                        ? 'bg-green-500/20 border border-green-500/30'
-                                        : feedback.correctness === 'partial'
+
+                                <div className={`mb-4 p-3 rounded-xl ${feedback.correctness === 'correct'
+                                    ? 'bg-green-500/20 border border-green-500/30'
+                                    : feedback.correctness === 'partial'
                                         ? 'bg-yellow-500/20 border border-yellow-500/30'
                                         : 'bg-red-500/20 border border-red-500/30'
-                                }`}>
+                                    }`}>
                                     <p className="text-white font-medium">
-                                        {feedback.correctness === 'correct' ? '✅ Correct!' : 
-                                         feedback.correctness === 'partial' ? '⚠️ Partially Correct' : 
-                                         '❌ Incorrect'}
+                                        {feedback.correctness === 'correct' ? '✅ Correct!' :
+                                            feedback.correctness === 'partial' ? '⚠️ Partially Correct' :
+                                                '❌ Incorrect'}
                                     </p>
                                     <p className="text-white/70 text-sm mt-1">Score: +{feedback.score}</p>
                                 </div>

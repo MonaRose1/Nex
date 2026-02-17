@@ -3,12 +3,12 @@ import PageHeader from '../components/PageHeader';
 import { Bot, LineChart, Globe, ShieldCheck } from 'lucide-react';
 
 const ServiceCard = ({ icon, title, description }) => (
-    <div className="glass p-8 rounded-3xl hover:bg-white/10 transition-colors duration-300">
-        <div className="w-14 h-14 bg-gradient-to-br from-royalBlue to-brightTeal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brightTeal/20">
+    <div className="glass p-8 rounded-3xl border-midnightBlue/10 dark:border-white/10 hover:bg-white/10 dark:hover:bg-white/10 transition-colors duration-300">
+        <div className="w-14 h-14 bg-gradient-to-br from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg shadow-brightTeal/20">
             {icon}
         </div>
-        <h3 className="text-xl font-bold font-sora mb-3">{title}</h3>
-        <p className="text-slate-400 leading-relaxed">{description}</p>
+        <h3 className="text-xl font-bold font-sora mb-3 text-slate-950 dark:text-white">{title}</h3>
+        <p className="text-slate-950 dark:text-slate-400 leading-relaxed font-medium">{description}</p>
     </div>
 );
 

@@ -4,7 +4,7 @@ import { Clock, TrendingDown, Zap } from 'lucide-react';
 const GlassIcon = ({ children }) => (
     <div className="relative w-20 h-20 mb-6 flex items-center justify-center rounded-2xl glass overflow-hidden group-hover:scale-110 transition-transform duration-300">
         <div className="absolute inset-0 bg-gradient-to-br from-brightTeal/20 to-royalBlue/20 opacity-50"></div>
-        <div className="relative z-10 text-brightTeal drop-shadow-[0_0_10px_rgba(60,178,184,0.5)]">
+        <div className="relative z-10 text-brightTeal-dark dark:text-brightTeal drop-shadow-[0_0_10px_rgba(60,178,184,0.5)]">
             {React.cloneElement(children, { size: 40, strokeWidth: 1.5 })}
         </div>
         {/* Inner Highlight */}
@@ -29,11 +29,11 @@ const StatCard = ({ title, value, description, icon, delay }) => {
 
             <div className="relative z-10 flex flex-col items-center">
                 <GlassIcon>{icon}</GlassIcon>
-                <div className="text-5xl md:text-6xl font-bold font-sora bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent mb-4 drop-shadow-xl group-hover:scale-110 transition-transform duration-300">
+                <div className="text-5xl md:text-6xl font-bold font-sora bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 dark:from-white dark:to-slate-400 bg-clip-text text-transparent mb-4 drop-shadow-xl group-hover:scale-110 transition-transform duration-300">
                     {value}
                 </div>
-                <h3 className="text-xl font-semibold text-brightTeal mb-2">{title}</h3>
-                <p className="text-slate-400 text-sm">{description}</p>
+                <h3 className="text-xl font-bold text-brightTeal-dark dark:text-brightTeal mb-2">{title}</h3>
+                <p className="text-slate-950 dark:text-slate-400 text-sm font-medium">{description}</p>
             </div>
         </div>
     );
@@ -43,10 +43,10 @@ const Stats = () => {
     return (
         <section id="stats" className="min-h-screen py-20 flex flex-col justify-center items-center relative">
             <div className="text-center mb-16 relative z-10 px-4">
-                <h2 className="text-3xl md:text-5xl font-bold font-sora mb-6">
-                    The <span className="text-brightTeal">Nex</span> Edge
+                <h2 className="text-3xl md:text-5xl font-bold font-sora mb-6 text-slate-950 dark:text-white">
+                    The <span className="text-brightTeal-dark dark:text-brightTeal">Nex</span> Edge
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
+                <p className="text-slate-950 dark:text-slate-400 max-w-2xl mx-auto font-medium">
                     Replacing traditional inefficiencies with autonomous intelligence.
                 </p>
             </div>

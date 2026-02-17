@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard';
 import Candidates from './pages/dashboard/Candidates';
 import AISettings from './pages/dashboard/AISettings';
 import Billing from './pages/dashboard/Billing';
+import AIInterviewer from './pages/dashboard/AIInterviewer';
+import AdminPanel from './pages/admin/AdminPanel';
 import AvatarProfile from './pages/AvatarProfile'; // 👈 IMPORT KARO
 
 // Scroll to top on route change
@@ -36,7 +38,7 @@ const NavigationWrapper = ({ children }) => {
 
 function App() {
   return (
-    <Router basename="/Nex">
+    <Router basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <NavigationWrapper>
         <Routes>
@@ -51,6 +53,8 @@ function App() {
           <Route path="/dashboard/candidates" element={<Candidates />} />
           <Route path="/dashboard/ai-settings" element={<AISettings />} />
           <Route path="/dashboard/billing" element={<Billing />} />
+          <Route path="/dashboard/interviewer" element={<AIInterviewer />} />
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="/dashboard/avatar" element={<AvatarProfile />} /> {/* 👈 ROUTE ADD KARO */}
         </Routes>
       </NavigationWrapper>

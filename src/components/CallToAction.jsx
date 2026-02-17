@@ -12,16 +12,16 @@ const CallToAction = () => {
                     <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-brightTeal/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
                     <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-royalBlue/20 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2"></div>
 
-                    <h2 className="text-4xl md:text-6xl font-bold font-sora mb-8 relative z-10">
+                    <h2 className="text-4xl md:text-6xl font-bold font-sora mb-8 relative z-10 text-slate-950 dark:text-white">
                         Hire the Best, <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Before Anyone Else.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 dark:from-white dark:to-slate-400">Before Anyone Else.</span>
                     </h2>
 
-                    <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
+                    <p className="text-slate-950 dark:text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10 font-medium">
                         Join the automated revolution. Experience the future of recruitment with Nex today.
                     </p>
 
-                    <button className="relative z-10 px-10 py-5 bg-white text-midnightBlue font-bold font-sora rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]">
+                    <button className="relative z-10 px-10 py-5 bg-gradient-to-r from-royalBlue-dark to-brightTeal-dark dark:bg-white text-white dark:text-midnightBlue font-bold font-sora rounded-full hover:scale-105 transition-transform duration-300 shadow-xl">
                         Get Started with Nex
                     </button>
                 </div>

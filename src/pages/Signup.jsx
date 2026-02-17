@@ -73,13 +73,13 @@ const Signup = () => {
         try {
             // Remove confirmPassword before sending to backend
             const { confirmPassword, ...signupData } = formData;
-            
+
             console.log('Sending signup data:', signupData); // For debugging
 
             const response = await axios.post(
                 'http://localhost:4000/api/auth/signup',
                 signupData,
-                { 
+                {
                     withCredentials: true,
                     headers: {
                         'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ const Signup = () => {
 
         } catch (err) {
             console.error('Signup error details:', err);
-            
+
             if (err.code === 'ECONNABORTED') {
                 setError('Request timeout. Please check if server is running.');
             } else if (err.response) {
@@ -129,14 +129,14 @@ const Signup = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center relative py-20">
-            <div className="glass p-10 rounded-3xl w-full max-w-md relative z-10">
-                <h2 className="text-3xl font-bold font-sora mb-2 text-center bg-gradient-to-r from-royalBlue to-brightTeal bg-clip-text text-transparent">
+            <div className="glass p-10 rounded-3xl w-full max-w-md relative z-10 border-midnightBlue/10 dark:border-white/10">
+                <h2 className="text-3xl font-bold font-sora mb-2 text-center bg-gradient-to-r from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal bg-clip-text text-transparent">
                     Create Account
                 </h2>
-                <p className="text-center text-slate-400 mb-8">
+                <p className="text-center text-slate-950 dark:text-slate-400 mb-8 font-medium">
                     Join the future of hiring today.
                 </p>
-                
+
                 {/* Error Message */}
                 {error && (
                     <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-xl animate-pulse">
@@ -154,30 +154,30 @@ const Signup = () => {
                 <form className="space-y-5" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">
-                                First Name <span className="text-red-400">*</span>
+                            <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
+                                First Name <span className="text-red-500">*</span>
                             </label>
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 name="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
+                                className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 placeholder="John"
                                 required
                                 disabled={loading}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">
-                                Last Name <span className="text-red-400">*</span>
+                            <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
+                                Last Name <span className="text-red-500">*</span>
                             </label>
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 name="lastName"
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
+                                className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 placeholder="Doe"
                                 required
                                 disabled={loading}
@@ -186,62 +186,61 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Email <span className="text-red-400">*</span>
+                        <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
+                            Email <span className="text-red-500">*</span>
                         </label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
-                            placeholder="you@example.com" 
+                            className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            placeholder="you@example.com"
                             required
                             disabled={loading}
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Password <span className="text-red-400">*</span>
+                        <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
+                            Password <span className="text-red-500">*</span>
                         </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
-                            placeholder="••••••••" 
+                            className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            placeholder="••••••••"
                             required
                             disabled={loading}
                         />
-                        <p className="text-xs text-slate-500 mt-1">
+                        <p className="text-xs text-slate-950 dark:text-slate-500 mt-1 font-medium">
                             Minimum 6 characters with at least 1 letter and 1 number
                         </p>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Confirm Password <span className="text-red-400">*</span>
+                        <label className="block text-sm font-bold text-slate-950 dark:text-slate-300 mb-2">
+                            Confirm Password <span className="text-red-500">*</span>
                         </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed" 
-                            placeholder="••••••••" 
+                            className="w-full bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            placeholder="••••••••"
                             required
                             disabled={loading}
                         />
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         disabled={loading}
-                        className={`w-full bg-gradient-to-r from-royalBlue to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02] ${
-                            loading ? 'opacity-50 cursor-not-allowed' : ''
-                        }`}
+                        className={`w-full bg-gradient-to-r from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02] ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
                     >
                         {loading ? (
                             <span className="flex items-center justify-center">
@@ -255,21 +254,21 @@ const Signup = () => {
                     </button>
                 </form>
 
-                <p className="mt-6 text-center text-slate-400 text-sm">
+                <p className="mt-6 text-center text-slate-950 dark:text-slate-400 text-sm font-medium">
                     Already have an account?{' '}
-                    <Link to="/login" className="text-brightTeal hover:underline font-medium">
+                    <Link to="/login" className="text-brightTeal-dark dark:text-brightTeal hover:underline font-bold">
                         Log in
                     </Link>
                 </p>
 
                 {/* Terms and Conditions */}
-                <p className="mt-4 text-center text-xs text-slate-500">
+                <p className="mt-4 text-center text-xs text-slate-950 dark:text-slate-500 font-medium">
                     By signing up, you agree to our{' '}
-                    <Link to="/terms" className="text-brightTeal hover:underline">
+                    <Link to="/terms" className="text-brightTeal-dark dark:text-brightTeal hover:underline font-bold">
                         Terms of Service
                     </Link>{' '}
                     and{' '}
-                    <Link to="/privacy" className="text-brightTeal hover:underline">
+                    <Link to="/privacy" className="text-brightTeal-dark dark:text-brightTeal hover:underline font-bold">
                         Privacy Policy
                     </Link>
                 </p>

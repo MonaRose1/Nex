@@ -13,10 +13,10 @@ const candidatesData = [
 
 const StatusBadge = ({ status }) => {
     const styles = {
-        'Interviewing': 'bg-brightTeal/10 text-brightTeal border-brightTeal/20',
-        'Shortlisted': 'bg-royalBlue/10 text-royalBlue border-royalBlue/20',
-        'Screening': 'bg-amber-500/10 text-amber-500 border-amber-500/20',
-        'Reviewing': 'bg-slate-500/10 text-slate-500 border-slate-500/20',
+        'Interviewing': 'bg-brightTeal/10 text-brightTeal-dark dark:text-brightTeal border-brightTeal/20',
+        'Shortlisted': 'bg-royalBlue/10 text-royalBlue-dark dark:text-royalBlue border-royalBlue/20',
+        'Screening': 'bg-amber-500/10 text-amber-600 dark:text-amber-500 border-amber-500/20',
+        'Reviewing': 'bg-slate-200 dark:bg-slate-500/10 text-slate-950 dark:text-slate-500 border-slate-300 dark:border-slate-500/20',
     };
     return (
         <span className={`px-2 py-1 rounded-md border text-[10px] font-bold uppercase tracking-wider ${styles[status] || styles['Reviewing']}`}>
@@ -31,8 +31,8 @@ const Candidates = () => {
             <div className="space-y-6 animate-fade-in">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h1 className="text-2xl font-sora font-bold text-midnightBlue dark:text-white">Active Candidates</h1>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Manage and track your top AI-scouted talent.</p>
+                        <h1 className="text-2xl font-sora font-bold text-slate-950 dark:text-white">Active Candidates</h1>
+                        <p className="text-sm text-slate-950 dark:text-slate-400">Manage and track your top AI-scouted talent.</p>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -54,25 +54,25 @@ const Candidates = () => {
                     <div className="overflow-x-auto">
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="border-b border-midnightBlue/5 dark:border-white/5 bg-midnightBlue/5 dark:bg-white/5">
-                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Candidate</th>
-                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Nex Match</th>
-                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Exp.</th>
-                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Status</th>
-                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-right">Actions</th>
+                                <tr className="border-b border-midnightBlue/10 dark:border-white/5 bg-slate-100 dark:bg-white/5">
+                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-950 dark:text-slate-500">Candidate</th>
+                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-950 dark:text-slate-500">Nex Match</th>
+                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-950 dark:text-slate-500">Exp.</th>
+                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-950 dark:text-slate-500">Status</th>
+                                    <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-950 dark:text-slate-500 text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-midnightBlue/5 dark:divide-white/5">
                                 {candidatesData.map((candidate) => (
-                                    <tr key={candidate.id} className="hover:bg-white/40 dark:hover:bg-white/5 transition-colors group">
+                                    <tr key={candidate.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-royalBlue to-brightTeal flex items-center justify-center text-[10px] font-bold text-white shadow-lg shadow-brightTeal/10">
+                                                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal flex items-center justify-center text-[10px] font-bold text-white shadow-lg shadow-brightTeal/10">
                                                     {candidate.avatar}
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-semibold text-midnightBlue dark:text-white">{candidate.name}</p>
-                                                    <p className="text-[10px] text-slate-500">{candidate.role}</p>
+                                                    <p className="text-sm font-bold text-slate-950 dark:text-white">{candidate.name}</p>
+                                                    <p className="text-[10px] text-slate-950 dark:text-slate-400 font-medium">{candidate.role}</p>
                                                 </div>
                                             </div>
                                         </td>
@@ -80,21 +80,21 @@ const Candidates = () => {
                                             <div className="flex items-center gap-2">
                                                 <div className="flex-1 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden w-24">
                                                     <div
-                                                        className="h-full bg-brightTeal transition-all duration-1000"
+                                                        className="h-full bg-brightTeal-dark dark:bg-brightTeal transition-all duration-1000"
                                                         style={{ width: `${candidate.match}%` }}
                                                     />
                                                 </div>
-                                                <span className="text-xs font-bold text-brightTeal">{candidate.match}%</span>
+                                                <span className="text-xs font-bold text-brightTeal-dark dark:text-brightTeal">{candidate.match}%</span>
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
-                                            <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">{candidate.experience}</span>
+                                            <span className="text-xs text-slate-950 dark:text-slate-400 font-bold">{candidate.experience}</span>
                                         </td>
                                         <td className="px-6 py-4">
                                             <StatusBadge status={candidate.status} />
                                         </td>
                                         <td className="px-6 py-4 text-right">
-                                            <button className="p-1 hover:text-brightTeal transition-colors">
+                                            <button className="p-1 text-slate-950 dark:text-slate-400 hover:text-brightTeal-dark dark:hover:text-brightTeal transition-colors">
                                                 <MoreHorizontal className="w-4 h-4" />
                                             </button>
                                         </td>

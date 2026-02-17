@@ -2,11 +2,11 @@ import React from 'react';
 
 const PageHeader = ({ title, subtitle }) => (
     <div className="pt-32 pb-12 text-center relative z-10 px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-sora mb-6 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-sora mb-6 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 dark:from-white dark:to-slate-400 bg-clip-text text-transparent transition-all duration-300">
             {title}
         </h1>
         {subtitle && (
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
+            <p className="text-lg md:text-xl text-slate-950 dark:text-slate-300 max-w-2xl mx-auto font-light transition-colors duration-300">
                 {subtitle}
             </p>
         )}

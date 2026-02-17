@@ -13,62 +13,62 @@ const Contact = () => {
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
                 {/* Contact Info */}
                 <div className="space-y-8">
-                    <div className="glass p-8 rounded-3xl flex items-start gap-6">
-                        <div className="p-3 bg-white/10 rounded-full text-brightTeal">
+                    <div className="glass p-8 rounded-3xl flex items-start gap-6 border-midnightBlue/10 dark:border-white/10">
+                        <div className="p-3 bg-brightTeal/10 rounded-full text-brightTeal-dark dark:text-brightTeal">
                             <Mail size={24} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold font-sora mb-1">Email Us</h3>
-                            <p className="text-slate-400">hello@nex-hiring.com</p>
-                            <p className="text-slate-400">support@nex-hiring.com</p>
+                            <h3 className="text-xl font-bold font-sora mb-1 text-slate-950 dark:text-white">Email Us</h3>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">hello@nex-hiring.com</p>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">support@nex-hiring.com</p>
                         </div>
                     </div>
 
-                    <div className="glass p-8 rounded-3xl flex items-start gap-6">
-                        <div className="p-3 bg-white/10 rounded-full text-brightTeal">
+                    <div className="glass p-8 rounded-3xl flex items-start gap-6 border-midnightBlue/10 dark:border-white/10">
+                        <div className="p-3 bg-brightTeal/10 rounded-full text-brightTeal-dark dark:text-brightTeal">
                             <Phone size={24} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold font-sora mb-1">Call Us</h3>
-                            <p className="text-slate-400">+1 (888) NEX-AI-HR</p>
-                            <p className="text-slate-400">Mon-Fri, 9am - 6pm PST</p>
+                            <h3 className="text-xl font-bold font-sora mb-1 text-slate-950 dark:text-white">Call Us</h3>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">+1 (888) NEX-AI-HR</p>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">Mon-Fri, 9am - 6pm PST</p>
                         </div>
                     </div>
 
-                    <div className="glass p-8 rounded-3xl flex items-start gap-6">
-                        <div className="p-3 bg-white/10 rounded-full text-brightTeal">
+                    <div className="glass p-8 rounded-3xl flex items-start gap-6 border-midnightBlue/10 dark:border-white/10">
+                        <div className="p-3 bg-brightTeal/10 rounded-full text-brightTeal-dark dark:text-brightTeal">
                             <MapPin size={24} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold font-sora mb-1">Visit Us</h3>
-                            <p className="text-slate-400">101 Innovation Dr</p>
-                            <p className="text-slate-400">San Francisco, CA 94107</p>
+                            <h3 className="text-xl font-bold font-sora mb-1 text-slate-950 dark:text-white">Visit Us</h3>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">101 Innovation Dr</p>
+                            <p className="text-slate-950 dark:text-slate-400 font-medium">San Francisco, CA 94107</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Form */}
-                <div className="glass p-10 rounded-3xl h-fit">
+                <div className="glass p-10 rounded-3xl h-fit border-midnightBlue/10 dark:border-white/10">
                     <form className="space-y-6">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-slate-300">Name</label>
-                                <input type="text" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all" />
+                                <label className="text-sm font-bold text-slate-950 dark:text-slate-300">Name</label>
+                                <input type="text" className="bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all" />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-slate-300">Company</label>
-                                <input type="text" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all" />
+                                <label className="text-sm font-bold text-slate-950 dark:text-slate-300">Company</label>
+                                <input type="text" className="bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all" />
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-slate-300">Email</label>
-                            <input type="email" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all" />
+                            <label className="text-sm font-bold text-slate-950 dark:text-slate-300">Email</label>
+                            <input type="email" className="bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all" />
                         </div>
                         <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-slate-300">Message</label>
-                            <textarea rows="4" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brightTeal focus:ring-1 focus:ring-brightTeal transition-all"></textarea>
+                            <label className="text-sm font-bold text-slate-950 dark:text-slate-300">Message</label>
+                            <textarea rows="4" className="bg-slate-50 dark:bg-white/5 border border-midnightBlue/10 dark:border-white/10 rounded-xl px-4 py-3 text-slate-950 dark:text-white focus:outline-none focus:border-brightTeal-dark dark:focus:border-brightTeal transition-all"></textarea>
                         </div>
-                        <button type="submit" className="w-full bg-gradient-to-r from-royalBlue to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02]">
+                        <button type="submit" className="w-full bg-gradient-to-r from-royalBlue-dark dark:from-royalBlue to-brightTeal-dark dark:to-brightTeal text-white font-bold py-3 rounded-xl hover:shadow-[0_0_20px_rgba(60,178,184,0.4)] transition-all transform hover:scale-[1.02]">
                             Send Message
                         </button>
                     </form>
