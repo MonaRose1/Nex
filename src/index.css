@@ -4,29 +4,37 @@
 
 @layer base {
   body {
-    @apply bg-midnightBlue text-softWhite font-inter antialiased overflow-x-hidden;
-    background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 40%, #020617 100%);
-    min-height: 100vh;
+    @apply bg-slate-50 text-midnightBlue font-inter antialiased overflow-x-hidden transition-colors duration-300;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  .dark body {
+    @apply bg-midnightBlue text-softWhite;
+    background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 40%, #020617 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-sora tracking-tight;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-lg;
+    @apply bg-white/40 dark:bg-white/5 backdrop-blur-lg border border-midnightBlue/5 dark:border-white/10 shadow-lg transition-all duration-300;
   }
-  
+
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300;
+    @apply bg-white/40 dark:bg-white/5 backdrop-blur-md border border-midnightBlue/5 dark:border-white/10 rounded-2xl transition-all duration-300 shadow-sm dark:shadow-none;
   }
-  
+
   .text-glow {
     text-shadow: 0 0 20px rgba(60, 178, 184, 0.5);
   }
-  
+
   .box-glow {
     box-shadow: 0 0 20px rgba(34, 123, 206, 0.3);
   }

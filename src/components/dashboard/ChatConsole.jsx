@@ -25,7 +25,7 @@ const ChatConsole = () => {
     };
 
     return (
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 flex flex-col h-full overflow-hidden">
+        <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl border border-midnightBlue/5 dark:border-white/10 flex flex-col h-full overflow-hidden transition-all duration-300 shadow-sm dark:shadow-none">
             <div className="p-4 border-b border-white/5 flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-brightTeal/20 flex items-center justify-center border border-brightTeal/30 relative">
                     <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-brightTeal" />
@@ -41,8 +41,8 @@ const ChatConsole = () => {
                 {messages.map((msg, i) => (
                     <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-[80%] p-3 rounded-2xl text-xs font-inter ${msg.role === 'user'
-                                ? 'bg-royalBlue text-white rounded-tr-none shadow-lg'
-                                : 'bg-white/10 text-white/80 border border-white/5 rounded-tl-none'
+                            ? 'bg-royalBlue text-white rounded-tr-none shadow-lg'
+                            : 'bg-white/10 text-white/80 border border-white/5 rounded-tl-none'
                             }`}>
                             {msg.text}
                         </div>
@@ -50,13 +50,13 @@ const ChatConsole = () => {
                 ))}
             </div>
 
-            <form onSubmit={handleSend} className="p-4 border-t border-white/5 flex gap-2">
+            <form onSubmit={handleSend} className="p-4 border-t border-midnightBlue/5 dark:border-white/5 flex gap-2">
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Talk to Nex..."
-                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-brightTeal/50 transition-colors"
+                    className="flex-1 bg-midnightBlue/5 dark:bg-white/5 border border-midnightBlue/5 dark:border-white/10 rounded-xl px-4 py-2 text-xs text-midnightBlue dark:text-white placeholder:text-midnightBlue/20 dark:placeholder:text-white/20 focus:outline-none focus:border-brightTeal/50 transition-all"
                 />
                 <button
                     type="submit"

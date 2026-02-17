@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,8 @@ const Navbar = () => {
 
                 {/* Desktop Auth Buttons */}
                 <div className="hidden lg:flex items-center gap-4">
-                    <Link to="/login" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                    <ThemeToggle />
+                    <Link to="/login" className="text-sm font-medium text-slate-500 dark:text-slate-300 hover:text-midnightBlue dark:hover:text-white transition-colors">
                         Log In
                     </Link>
                     <Link to="/signup" className="bg-gradient-to-r from-royalBlue to-brightTeal text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg shadow-brightTeal/20 hover:shadow-brightTeal/40 transition-all transform hover:scale-105">

@@ -1,16 +1,17 @@
 import React from 'react';
 import { LayoutDashboard, Users, Cpu, Settings, LogOut, UserCircle, Camera, Mic, Video } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import ThemeToggle from '../ThemeToggle';
 
 const NavItem = ({ icon: Icon, label, path, active, collapsed, badge }) => (
     <Link
         to={path}
         className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group relative ${active
-                ? 'bg-brightTeal/20 text-brightTeal border border-white/10 shadow-[0_0_15px_rgba(60,178,184,0.3)]'
-                : 'text-white/50 hover:bg-white/5 hover:text-white'
+            ? 'bg-brightTeal/20 text-brightTeal border border-brightTeal/10 shadow-[0_0_15px_rgba(60,178,184,0.3)]'
+            : 'text-slate-500 dark:text-white/50 hover:bg-slate-200/50 dark:hover:bg-white/5 hover:text-midnightBlue dark:hover:text-white'
             }`}
     >
-        <div className={`${active ? 'drop-shadow-[0_0_8px_rgba(60,178,184,0.5)]' : ''}`}>
+        <div className={`${active ? 'drop-shadow-[0_0_8px_rgba(60,178,184,0.4)]' : ''} transition-all`}>
             <Icon size={20} />
         </div>
         {!collapsed && (
@@ -41,7 +42,7 @@ const Sidebar = () => {
         <aside
             onMouseEnter={() => setIsCollapsed(false)}
             onMouseLeave={() => setIsCollapsed(true)}
-            className={`fixed left-0 top-0 h-screen z-50 bg-midnightBlue/80 backdrop-blur-2xl border-r border-white/10 transition-all duration-500 ease-in-out flex flex-col py-6 ${isCollapsed ? 'w-20' : 'w-72'
+            className={`fixed left-0 top-0 h-screen z-50 bg-slate-50/80 dark:bg-midnightBlue/80 backdrop-blur-2xl border-r border-midnightBlue/5 dark:border-white/10 transition-all duration-500 ease-in-out flex flex-col py-6 ${isCollapsed ? 'w-20' : 'w-72'
                 }`}
         >
             {/* Logo */}
@@ -57,7 +58,7 @@ const Sidebar = () => {
             </div>
 
             {/* Avatar Profile Section - Always Visible */}
-            <div 
+            <div
                 onClick={() => navigate('/dashboard/avatar')}
                 className={`mx-4 mb-6 cursor-pointer group relative ${isCollapsed ? 'text-center' : ''}`}
             >
@@ -65,14 +66,14 @@ const Sidebar = () => {
                     {/* Avatar Image */}
                     <div className={`relative ${isCollapsed ? 'w-12 h-12 mx-auto' : 'w-16 h-16'} rounded-2xl bg-gradient-to-br from-royalBlue to-brightTeal p-[2px] group-hover:scale-105 transition-all duration-300`}>
                         <div className="w-full h-full rounded-2xl bg-midnightBlue overflow-hidden">
-                            <img 
+                            <img
                                 src={user.avatar}
                                 alt={user.name}
                                 className="w-full h-full object-cover"
                             />
                         </div>
                     </div>
-                    
+
                     {/* Live Indicator */}
                     {user.isLive && (
                         <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-midnightBlue animate-pulse"></div>
@@ -121,7 +122,7 @@ const Sidebar = () => {
                     active={location.pathname === '/dashboard/billing'}
                     collapsed={isCollapsed}
                 />
-                
+
                 {/* Avatar Profile Link - New */}
                 <NavItem
                     icon={UserCircle}
@@ -133,7 +134,10 @@ const Sidebar = () => {
             </nav>
 
             {/* Bottom Section */}
-            <div className="px-4 mt-auto space-y-2">
+            <div className="px-4 mt-auto space-y-2 space-y-4">
+                <div className="flex justify-center">
+                    <ThemeToggle />
+                </div>
                 {/* Live Interview Status */}
                 {!isCollapsed && (
                     <div className="bg-gradient-to-r from-royalBlue/20 to-brightTeal/20 rounded-xl p-3 mb-2 border border-white/5">

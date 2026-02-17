@@ -52,21 +52,21 @@ const CandidateMatchChart = () => {
             {/* Chart container with fixed height and proper spacing */}
             <div className="w-full" style={{ height: '220px' }}>
                 <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart 
-                        cx="50%" 
-                        cy="50%" 
-                        outerRadius={getOuterRadius()} 
+                    <RadarChart
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={getOuterRadius()}
                         data={data}
                         margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
                     >
-                        <PolarGrid 
-                            stroke="#ffffff15" 
+                        <PolarGrid
+                            stroke="#ffffff15"
                             strokeDasharray="3 3"
                         />
                         <PolarAngleAxis
                             dataKey="subject"
-                            tick={{ 
-                                fill: '#ffffff70', 
+                            tick={{
+                                fill: '#ffffff70',
                                 fontSize: getTickFontSize(),
                                 fontWeight: 500,
                             }}
@@ -94,8 +94,8 @@ const CandidateMatchChart = () => {
                             {item.A}%
                         </span>
                         <div className="w-full h-0.5 bg-white/10 mt-1 rounded-full overflow-hidden">
-                            <div 
-                                className="h-full bg-[#3CB2B8] rounded-full" 
+                            <div
+                                className="h-full bg-[#3CB2B8] rounded-full"
                                 style={{ width: `${(item.A / 150) * 100}%` }}
                             ></div>
                         </div>

@@ -9,6 +9,9 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
+import Candidates from './pages/dashboard/Candidates';
+import AISettings from './pages/dashboard/AISettings';
+import Billing from './pages/dashboard/Billing';
 import AvatarProfile from './pages/AvatarProfile'; // 👈 IMPORT KARO
 
 // Scroll to top on route change
@@ -45,6 +48,9 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/candidates" element={<Candidates />} />
+          <Route path="/dashboard/ai-settings" element={<AISettings />} />
+          <Route path="/dashboard/billing" element={<Billing />} />
           <Route path="/dashboard/avatar" element={<AvatarProfile />} /> {/* 👈 ROUTE ADD KARO */}
         </Routes>
       </NavigationWrapper>
